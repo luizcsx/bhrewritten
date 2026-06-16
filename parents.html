@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-dark">
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#00A9FE">
+<meta name="og:image" content="cdn/favicon.ico">
+<meta name="og:site_name" content="Brick Hill Rewritten">
+<meta name="og:description" content="Information for parents about Brick Hill Rewritten — a safe, free, community-driven platform for players of all ages.">
+<meta name="csrf-token" content="">
+<meta name="user-data" data-authenticated="false">
+<title>Parents - Brick Hill Rewritten</title>
+<meta name="og:title" content="Parents — Brick Hill Rewritten">
+<link href="cdn/favicon.ico" rel="icon">
+<link href="cdn/css/c9a0705161b97f89816f.css" rel="stylesheet" type="text/css">
+<link href="cdn/css/0ae4afbd7666558dc6c6.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" crossorigin="anonymous">
+<script src="cdn/js/a7ee297bf1549559dc3f.js"></script>
+<script src="cdn/js/2be524371fb890d9a658.js"></script>
+<script src="cdn/js/d5fc6b02ce16b82664fd.js"></script>
+<script src="cdn/js/fd81458147e6d5526c5d.js"></script>
+<script src="cdn/js/57af023c87e71bf36f5a.js"></script>
+<meta name="author" content="Brick Hill Rewritten">
+
+<style>
+body {
+    background-color: #222226;
+}
+
+.parents-hero {
+    background: #275229;
+    border-bottom: 3px solid #3ADE55;
+    padding: 52px 20px 44px;
+    text-align: center;
+    margin-bottom: 0;
+}
+.parents-hero .hero-icon {
+    font-size: 3.5rem;
+    color: #3ADE55;
+    margin-bottom: 18px;
+}
+.parents-hero h1 {
+    margin: 0 0 14px;
+    font-size: 1.9em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: #fff;
+}
+.parents-hero p {
+    max-width: 640px;
+    margin: 0 auto;
+    color: #adadb8;
+    font-size: .95em;
+    line-height: 1.7;
+}
+
+.qa-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    justify-content: center;
+    margin: 48px 0 0;
+    width: 100%;
+}
+.qa-card {
+    background-color: #2d2e31;
+    border-radius: 8px;
+    padding: 24px 22px;
+    flex: 1 1 200px;
+    max-width: 240px;
+    text-align: center;
+    border-top: 3px solid #3ADE55;
+    box-shadow: 0 2px 8px rgba(0,0,0,.35);
+}
+.qa-card .qa-icon {
+    font-size: 1.8rem;
+    color: #3ADE55;
+    margin-bottom: 12px;
+}
+.qa-card h3 {
+    margin: 0 0 8px;
+    font-size: .88em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: #fff;
+}
+.qa-card p {
+    font-size: .83em;
+    color: #adadb8;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.section-label {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 56px 0 28px;
+    width: 100%;
+}
+.section-label span {
+    font-size: .72em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: #64646a;
+    white-space: nowrap;
+}
+.section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background-color: #2d2e31;
+}
+
+.info-block {
+    background-color: #2d2e31;
+    border-radius: 8px;
+    padding: 32px 28px;
+    margin-bottom: 20px;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    gap: 28px;
+    box-sizing: border-box;
+}
+.info-block.accent-blue  { border-left: 4px solid #00A9FE; }
+.info-block.accent-green { border-left: 4px solid #3ADE55; }
+.info-block.accent-red   { border-left: 4px solid #e05252; }
+.info-block.accent-yellow{ border-left: 4px solid #e5c765; }
+
+.info-block .ib-icon {
+    font-size: 2.4rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+.info-block.accent-blue  .ib-icon { color: #00A9FE; }
+.info-block.accent-green .ib-icon { color: #3ADE55; }
+.info-block.accent-red   .ib-icon { color: #e05252; }
+.info-block.accent-yellow .ib-icon { color: #e5c765; }
+
+.info-block h2 {
+    margin: 0 0 10px;
+    font-size: 1.05em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: #fff;
+}
+.info-block p {
+    margin: 0 0 10px;
+    color: #adadb8;
+    font-size: .9em;
+    line-height: 1.72;
+}
+.info-block p:last-child { margin-bottom: 0; }
+
+.guide-steps {
+    width: 100%;
+    margin-bottom: 8px;
+}
+.guide-step {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    margin-bottom: 28px;
+}
+.guide-step .step-num {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #00A9FE;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 0 4px #1a2a35;
+    margin-top: 2px;
+}
+.guide-step .step-body h3 {
+    margin: 0 0 6px;
+    font-size: .95em;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+}
+.guide-step .step-body p {
+    margin: 0;
+    color: #adadb8;
+    font-size: .88em;
+    line-height: 1.68;
+}
+.guide-step .step-body .step-tip {
+    display: inline-block;
+    margin-top: 8px;
+    background-color: #1e2c1e;
+    border: 1px solid #3ADE55;
+    border-radius: 5px;
+    padding: 6px 12px;
+    font-size: .8em;
+    color: #3ADE55;
+}
+
+.faq-list {
+    width: 100%;
+}
+.faq-item {
+    background-color: #2d2e31;
+    border-radius: 7px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+.faq-item summary {
+    list-style: none;
+    padding: 18px 22px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: .92em;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+    content: '\f078';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    font-size: .75em;
+    color: #64646a;
+    transition: transform .2s ease;
+    flex-shrink: 0;
+    margin-left: 12px;
+}
+.faq-item[open] summary::after {
+    transform: rotate(180deg);
+}
+.faq-item[open] summary {
+    border-bottom: 1px solid #3a3b3f;
+    color: #00A9FE;
+}
+.faq-item .faq-answer {
+    padding: 18px 22px;
+    color: #adadb8;
+    font-size: .88em;
+    line-height: 1.7;
+}
+.faq-item .faq-answer p { margin: 0 0 10px; }
+.faq-item .faq-answer p:last-child { margin-bottom: 0; }
+
+.contact-cta {
+    background-color: #19191c;
+    border-radius: 8px;
+    padding: 40px 32px;
+    text-align: center;
+    margin: 8px 0 60px;
+    width: 100%;
+    box-sizing: border-box;
+}
+.contact-cta .cta-icon {
+    font-size: 2.5rem;
+    color: #00A9FE;
+    margin-bottom: 16px;
+}
+.contact-cta h2 {
+    margin: 0 0 12px;
+    font-size: 1.15em;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: #fff;
+}
+.contact-cta p {
+    max-width: 540px;
+    margin: 0 auto 22px;
+    color: #adadb8;
+    font-size: .9em;
+    line-height: 1.68;
+}
+.contact-cta .cta-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.static-footer-wrap {
+    position: relative;
+}
+.static-footer-wrap footer {
+    position: relative !important;
+    bottom: auto !important;
+}
+.footer-social-icon {
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    fill: #64646a;
+    vertical-align: middle;
+}
+
+@media screen and (max-width: 767px) {
+    .info-block { flex-direction: column; padding: 22px 18px; gap: 16px; }
+    .qa-card { max-width: 100%; }
+    .parents-hero h1 { font-size: 1.35em; }
+    .contact-cta { padding: 28px 18px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+<div class="primary">
+<div class="grid">
+<div class="push-left">
+<ul>
+<li><a href="/play">Play</a></li>
+<li><a href="/shop">Shop</a></li>
+<li><a href="/clans">Clans</a></li>
+<li><a href="/users">Users</a></li>
+<li><a href="/forum">Forum</a></li>
+<li><a href="/parents">Parents</a></li>
+</ul>
+</div>
+<div class="nav-user push-right" id="info">
+<div class="username login-buttons">
+<a href="/login" class="login-button">Login</a>
+<a href="/register" class="register-button">Register</a>
+</div>
+</div>
+</div>
+</div>
+</nav>
+
+<div class="parents-hero">
+<div class="hero-icon"><i class="fas fa-user-shield"></i></div>
+<h1>Information for Parents</h1>
+<p>Everything you need to know about Brick Hill Rewritten — what it is, how it works, how we keep it safe, and how you can manage your child's account.</p>
+</div>
+
+<div class="main-holder grid">
+<notification id="notification-v" class="notification"></notification>
+
+<div class="qa-grid">
+    <div class="qa-card">
+        <div class="qa-icon"><i class="fas fa-ban"></i></div>
+        <h3>No Ads</h3>
+        <p>The platform is completely free and never shows advertisements of any kind.</p>
+    </div>
+    <div class="qa-card">
+        <div class="qa-icon"><i class="fas fa-dollar-sign"></i></div>
+        <h3>No Purchases</h3>
+        <p>There are no microtransactions, paid currency, or pay-to-win mechanics.</p>
+    </div>
+    <div class="qa-card">
+        <div class="qa-icon"><i class="fas fa-lock"></i></div>
+        <h3>Minimal Data</h3>
+        <p>We only collect what is strictly necessary to create and maintain an account.</p>
+    </div>
+    <div class="qa-card">
+        <div class="qa-icon"><i class="fas fa-shield-alt"></i></div>
+        <h3>Moderated</h3>
+        <p>Volunteer staff actively review reports and enforce our community rules.</p>
+    </div>
+    <div class="qa-card">
+        <div class="qa-icon"><i class="fas fa-flag"></i></div>
+        <h3>Easy Reporting</h3>
+        <p>Any player can report another player or content at any time, directly from the page.</p>
+    </div>
+</div>
+
+<div class="section-label"><span>About the Platform</span></div>
+
+<div class="info-block accent-blue">
+    <div class="ib-icon"><i class="fas fa-cubes"></i></div>
+    <div>
+        <h2>What is Brick Hill Rewritten?</h2>
+        <p>Brick Hill Rewritten is a free, non-commercial fan project that revives the <a href="https://brick-hill.com">original Brick Hill platform</a> (2017-2023), a community site where players could customise an avatar, play user-created games, trade virtual items, join clans, and participate in forums.</p>
+        <p>The original platform was shut down in 2023. This revival — maintained by volunteer fans — rebuilds it from scratch to keep the community alive. It is <strong>not</strong> an official product of Mooshimity, Ltd. (the original owner) and has no commercial relationship with them.</p>
+        <p>The platform targets a general audience of all ages. There is no violent content, no gambling mechanics, and no adult material.</p>
+    </div>
+</div>
+
+<div class="info-block accent-green">
+    <div class="ib-icon"><i class="fas fa-heart"></i></div>
+    <div>
+        <h2>Who Runs It?</h2>
+        <p>Brick Hill Rewritten is built and maintained by a small team of volunteer developers and moderators — community members who grew up with the original platform and want to preserve it. There is no company behind it, no investors, and no profit motive.</p>
+        <p>The source code is publicly available on <a href="https://github.com/luizcsx/bhrewritten" style="color:#3ADE55;">GitHub</a>, which means anyone can inspect exactly how the platform works. We operate with full transparency.</p>
+    </div>
+</div>
+
+<div class="section-label"><span>Safety & Moderation</span></div>
+
+<div class="info-block accent-green">
+    <div class="ib-icon"><i class="fas fa-shield-alt"></i></div>
+    <div>
+        <h2>How We Keep the Platform Safe</h2>
+        <p>Our volunteer moderation team monitors reported content around the clock. Every piece of user-generated content — forum posts, game names, clan descriptions, usernames — is subject to our <a href="/rules">Rules of Conduct</a>. Violations are handled with warnings, temporary suspensions, or permanent bans depending on severity.</p>
+        <p>Automated filters block a wide range of inappropriate words and links before content ever reaches other users. Our moderation team reviews everything that slips through and acts quickly on player reports.</p>
+        <p>We do not allow real-money trading, sharing of personal information, or contact-seeking behaviour. Any player found doing so is removed.</p>
+    </div>
+</div>
+
+<div class="info-block accent-yellow">
+    <div class="ib-icon"><i class="fas fa-comments"></i></div>
+    <div>
+        <h2>Chat & Communication</h2>
+        <p>Players can communicate through the platform's public forum and in-game chat. All messages are subject to our moderation policy. There is no private direct messaging by default for new accounts — this feature requires account standing.</p>
+        <p>We strongly encourage parents to explore the forum with their child so you can see the kind of conversations that take place. The community is primarily interested in games, avatar customisation, and creative building.</p>
+    </div>
+</div>
+
+<div class="info-block accent-red">
+    <div class="ib-icon"><i class="fas fa-flag"></i></div>
+    <div>
+        <h2>Reporting & Blocking</h2>
+        <p>Every profile, forum post, and game page has a visible Report button. Reports go directly to our moderation queue and are reviewed as quickly as possible. Players can also block another user at any time, which prevents all interaction.</p>
+        <p>If you believe a report was not acted upon correctly, you can escalate it by emailing us directly at <a href="mailto:bhrewritten@gmail.com" style="color:#e05252;">bhrewritten@gmail.com</a>. We take escalations seriously.</p>
+    </div>
+</div>
+
+<div class="section-label"><span>Data & Privacy</span></div>
+
+<div class="info-block accent-blue">
+    <div class="ib-icon"><i class="fas fa-database"></i></div>
+    <div>
+        <h2>What Data We Collect</h2>
+        <p>To create an account, we ask for a username, email address, date of birth and password. That's it. We do not ask for a real name, phone number, physical address or payment information.</p>
+        <p>Email addresses are used exclusively for account recovery (in case a player forgets their password), and the date of birth is used to determine if the user is a minor or not (i.e., to make the parental control system functional). We do not send marketing emails, we do not share email addresses with third parties, and we do not sell any user data — ever.</p>
+        <p>Account data is stored securely. Passwords are hashed and never stored in plain text. You can request deletion of your child's account at any time by contacting us.</p>
+    </div>
+</div>
+
+<div class="info-block accent-yellow">
+    <div class="ib-icon"><i class="fas fa-cookie-bite"></i></div>
+    <div>
+        <h2>Cookies & Tracking</h2>
+        <p>We use session cookies only to keep players logged in. We do not use advertising trackers, cross-site tracking, analytics that identify individuals, or any third-party tracking scripts beyond the Font Awesome icon library (which loads fonts, not user data).</p>
+    </div>
+</div>
+
+<div class="section-label"><span>Parent's Getting-Started Guide</span></div>
+
+<div class="guide-steps">
+
+    <div class="guide-step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+            <h3>Create an Account Together</h3>
+            <p>Visit <a href="/register" style="color:#00A9FE;">Register</a> and create an account alongside your child. Choose a username that does not reveal their real name (e.g. <em>CoolBuilder42</em> instead of <em>JohnSmith</em>). Use a password manager or write the password in a safe place so you always have access.</p>
+            <span class="step-tip"><i class="fas fa-lightbulb" style="margin-right:6px;"></i>Tip: Use an email address you control for account recovery.</span>
+        </div>
+    </div>
+
+    <div class="guide-step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+            <h3>Explore the Platform Together</h3>
+            <p>Before your child plays unsupervised, spend 15 minutes exploring together. Click through the <a href="/shop" style="color:#00A9FE;">Shop</a> (items are virtual and free), browse the <a href="/forum" style="color:#00A9FE;">Forum</a>, and look at a couple of <a href="/play" style="color:#00A9FE;">Games</a>. This gives you a concrete understanding of what your child will be doing and lets you answer their questions later.</p>
+        </div>
+    </div>
+
+    <div class="guide-step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+            <h3>Review the Rules Together</h3>
+            <p>Read through our <a href="/rules" style="color:#00A9FE;">Rules of Conduct</a> with your child. The rules are written in plain language. Discussing them together sets clear expectations and makes reporting feel natural rather than like "telling on someone."</p>
+            <span class="step-tip"><i class="fas fa-lightbulb" style="margin-right:6px;"></i>Key rule: Never share personal information — real name, school, phone number, or location.</span>
+        </div>
+    </div>
+
+    <div class="guide-step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+            <h3>Teach Them How to Report & Block</h3>
+            <p>Show your child where the Report button appears on profiles and forum posts, and how to block another player. Encourage them to come to you with anything that makes them feel uncomfortable, and make sure they know they won't get in trouble for reporting.</p>
+        </div>
+    </div>
+
+    <div class="guide-step">
+        <div class="step-num">5</div>
+        <div class="step-body">
+            <h3>Check In Periodically</h3>
+            <p>Ask your child what games they've been playing, what clans they've joined, and who they've been talking to in the forum. This doesn't need to be an interrogation — just normal conversation. It keeps communication open and lets you spot anything unusual early.</p>
+            <span class="step-tip"><i class="fas fa-lightbulb" style="margin-right:6px;"></i>Tip: You can log in to their account at any time to review activity since you set it up together.</span>
+        </div>
+    </div>
+
+    <div class="guide-step">
+        <div class="step-num">6</div>
+        <div class="step-body">
+            <h3>Know How to Contact Us</h3>
+            <p>If you ever have a concern that you can't resolve through the in-platform report system, email us directly at <a href="mailto:bhrewritten@gmail.com" style="color:#00A9FE;">bhrewritten@gmail.com</a>. We respond to parent enquiries as a priority. Include your child's username and a brief description of the issue.</p>
+        </div>
+    </div>
+
+</div>
+
+<div class="section-label"><span>Frequently Asked Questions</span></div>
+
+<div class="faq-list">
+
+    <details class="faq-item">
+        <summary>Is Brick Hill Rewritten free? Are there any hidden costs?</summary>
+        <div class="faq-answer">
+            <p>Yes, completely free. There are no paid subscriptions, no premium currency, no battle passes, no loot boxes, and no microtransactions of any kind. All in-game items are earned through participation or obtained through the platform's virtual economy, where players trade with each other using the platform's free in-game currency — not real money.</p>
+            <p>We are a non-profit fan project. We have no mechanism for accepting money from players.</p>
+        </div>
+    </details>
+
+    <details class="faq-item">
+        <summary>Can strangers contact my child directly?</summary>
+        <div class="faq-answer">
+            <p>All communication on the platform is semi-public. Forum posts are visible to everyone. In-game chat is visible to others in the same game session. There is no secret or hidden messaging system.</p>
+            <p>Any player can be blocked instantly, which removes all ability for them to interact with your child. Blocked players cannot see your child's posts or send them any messages.</p>
+        </div>
+    </details>
+
+    <details class="faq-item">
+        <summary>My child is under 13. Is that okay?</summary>
+        <div class="faq-answer">
+            <p>Our platform is designed to be suitable for all ages. We do not serve advertising, we do not collect personal data beyond a username and email, and content is actively moderated. We recommend that parents of younger children create the account themselves and play alongside their child initially.</p>
+            <p>If you have specific concerns about your younger child's use of the platform, please contact us and we will be happy to discuss them directly.</p>
+        </div>
+    </details>
+
+    <details class="faq-item">
+        <summary>What kind of content appears in user-created games?</summary>
+        <div class="faq-answer">
+            <p>Games on Brick Hill Rewritten are built using the platform's own game engine — they are not arbitrary links to external sites. Game content is subject to our Rules of Conduct, which prohibit violent, sexual, or otherwise inappropriate content. Games that violate these rules are removed.</p>
+            <p>The games are generally sandbox, adventure, or obstacle-course style experiences built with simple blocky graphics — comparable in tone and complexity to classic Roblox games. There is no graphic violence or mature content permitted.</p>
+        </div>
+    </details>
+
+    <details class="faq-item">
+        <summary>Can I delete my child's account?</summary>
+        <div class="faq-answer">
+            <p>Yes. Email <a href="mailto:bhrewritten@gmail.com" style="color:#00A9FE;">bhrewritten@gmail.com</a> from the email address associated with the account and request deletion. We will permanently delete the account and all associated data. This action cannot be undone.</p>
+        </div>
+    </details>
+
+    <details class="faq-item">
+        <summary>Is the platform affiliated with Roblox or the original Brick Hill?</summary>
+        <div class="faq-answer">
+            <p>No. Brick Hill Rewritten has no affiliation with Roblox Corporation or with Mooshimity, Ltd. (the company that ran the original Brick Hill). We are an independent, fan-made revival project. Brick Hill™ is a registered trademark of Mooshimity, Ltd.; we use the name descriptively to identify what we are reviving, but we have no commercial or legal relationship with them.</p>
+        </div>
+    </details>
+
+    <details class="faq-item">
+        <summary>What happens if my child breaks the rules?</summary>
+        <div class="faq-answer">
+            <p>Depending on the severity of the infraction, consequences range from a warning on their account to a temporary suspension (hours or days) to a permanent ban. Our moderation team assesses each situation individually. For first-time minor violations, a warning is most common.</p>
+            <p>If your child's account is suspended and you believe it was a mistake, you can contact us to appeal the decision. Please include the username and a description of what happened.</p>
+        </div>
+    </details>
+
+    <details class="faq-item">
+        <summary>I saw something inappropriate on the platform. What should I do?</summary>
+        <div class="faq-answer">
+            <p>Please use the Report button on the relevant page. If you are not logged in or the report button is not visible, email <a href="mailto:bhrewritten@gmail.com" style="color:#00A9FE;">bhrewritten@gmail.com</a> with as much detail as possible (username of the offending player, link to the content, screenshot if available). We take every report seriously and will act promptly.</p>
+        </div>
+    </details>
+
+</div>
+
+<div class="contact-cta">
+    <div class="cta-icon"><i class="fas fa-envelope-open-text"></i></div>
+    <h2>Still Have Questions?</h2>
+    <p>Our team is happy to speak with parents directly. Whether you have a safety concern, a question about your child's account, or just want to know more about the platform before allowing access — reach out and we'll respond promptly.</p>
+    <div class="cta-buttons">
+        <a href="mailto:bhrewritten@gmail.com">
+            <button class="button blue no-overflow"><i class="fas fa-envelope" style="margin-right:7px;"></i>Email Us</button>
+        </a>
+        <a href="/rules">
+            <button class="button green no-overflow"><i class="fas fa-book" style="margin-right:7px;"></i>Rules of Conduct</button>
+        </a>
+        <a href="/privacy">
+            <button class="button no-overflow" style="background-color:#2d2e31;border-color:#64646a;"><i class="fas fa-shield-alt" style="margin-right:7px;"></i>Privacy Policy</button>
+        </a>
+    </div>
+</div>
+
+</div>
+
+<div class="static-footer-wrap new-theme">
+<footer>
+  <div class="footer-social very-bold flex">
+    <p class="blue-text no-mobile">FOLLOW US</p>
+
+    <a href="mailto:bhrewritten@gmail.com" target="_blank">
+      <svg class="footer-social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+      </svg>
+    </a>
+
+    <a href="https://x.com/bhrewritten" target="_blank">
+      <svg class="footer-social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622 5.91-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+      </svg>
+    </a>
+
+    <a href="https://github.com/luizcsx/bhrewritten" target="_blank">
+      <svg class="footer-social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+      </svg>
+    </a>
+
+    <a href="https://www.youtube.com/@bhrewritten" target="_blank">
+      <svg class="footer-social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+      </svg>
+    </a>
+
+    <a href="https://instagram.com/bhrewritten" target="_blank">
+      <svg class="footer-social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+      </svg>
+    </a>
+
+    <a href="https://tiktok.com/@bhrewritten" target="_blank">
+      <svg class="footer-social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/>
+      </svg>
+    </a>
+  </div>
+
+  <div class="footer-divider"></div>
+
+  <div class="footer-links flex">
+    <a href="/terms">TERMS OF SERVICE</a>
+    <a href="/rules">RULES OF CONDUCT</a>
+    <a href="/privacy">PRIVACY POLICY</a>
+    <a href="/team">TEAM</a>
+    <a href="https://github.com/luizcsx/bh-rewritten">REPOSITORY</a>
+  </div>
+
+  <div class="footer-divider"></div>
+
+  <p class="footer-copyright">
+    &copy; <script>document.write(new Date().getFullYear())</script> Brick Hill Rewritten Team. Brick Hill™ is a registered trademark of Mooshimity, Ltd. We are not partners, sponsors, or affiliates of Mooshimity, Ltd. BHRewritten.pages.dev is a non-profit and completely free project with no attempt to generate any revenue.
+  </p>
+</footer>
+</div>
+
+</body>
+</html>
