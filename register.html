@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-dark">
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#00A9FE">
+<meta name="og:image" content="cdn/favicon.ico">
+<meta name="og:site_name" content="Brick Hill Rewritten">
+<meta name="og:description" content="A platform built on its community where you can customise your avatar, create and play games, or just socialise with others!">
+<meta name="csrf-token" content="Jd2H3XGjHi4G7Jt2TWmQhzfqttv94E37cHaYC9HN">
+<meta name="user-data" data-authenticated="false">
+<title>Register - Brick Hill Rewritten</title>
+<meta name="og:title" content="Register - Brick Hill Rewritten">
+<link href="cdn/favicon.ico" rel="icon">
+<link href="cdn/css/c9a0705161b97f89816f.css" rel="stylesheet" type="text/css">
+<link href="cdn/css/0ae4afbd7666558dc6c6.css" rel="stylesheet" type="text/css">
+<!-- integrity removido: estava vazio e causava falha de SRI bloqueando o carregamento -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" crossorigin="anonymous">
+<script src="cdn/js/a7ee297bf1549559dc3f.js"></script>
+<script src="cdn/js/2be524371fb890d9a658.js"></script>
+<script src="cdn/js/d5fc6b02ce16b82664fd.js"></script>
+<script src="cdn/js/fd81458147e6d5526c5d.js"></script>
+<script src="cdn/js/57af023c87e71bf36f5a.js"></script>
+<script src="https://hcaptcha.com/1/api.js" async defer></script>
+<meta name="author" content="Brick Hill Rewritten">
+
+<style>
+body {
+    background-color: #222226;
+}
+h3 {
+    margin: 2px 0;
+}
+h6 {
+    margin: 2px 0;
+    font-size: 12px;
+}
+input:not([type="radio"]) {
+    display: block;
+    margin-bottom: 5px;
+}
+.genders {
+    margin-bottom: 5px;
+}
+input[type="radio" i] {
+    margin: 3px 3px 0 0;
+}
+label {
+    margin-right: 5px;
+}
+
+/* ── Footer (idêntico ao credits.html) ── */
+.static-footer-wrap {
+    position: relative;
+}
+.static-footer-wrap footer {
+    position: relative !important;
+    bottom: auto !important;
+}
+.footer-social-icon {
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    fill: #64646a;
+    vertical-align: middle;
+}
+</style>
+</head>
+<body>
+
+<nav>
+<div class="primary">
+<div class="grid">
+<div class="push-left">
+<ul>
+<li>
+<a href="/play">
+Play
+</a>
+</li>
+<li>
+<a href="/shop">
+Shop
+</a>
+</li>
+<li>
+<a href="/clans">
+Clans
+</a>
+</li>
+<li>
+<a href="/users">
+Users
+</a>
+</li>
+<li>
+<a href="/forum">
+Forum
+</a>
+</li>
+<li>
+<a href="/parents">
+Parents
+</a>
+</li>
+</ul>
+</div>
+<div class="nav-user push-right" id="info">
+<div class="username login-buttons">
+<a href="/login" class="login-button">Login</a>
+<a href="/register" class="register-button">Register</a>
+</div>
+</div>
+</div>
+</div>
+</nav>
+
+<div class="main-holder grid">
+<notification id="notification-v" class="notification"></notification>
+
+<div class="col-10-12 push-1-12">
+<div class="card">
+<div class="top blue">
+Register
+</div>
+<div class="content">
+<div class="col-8-12">
+<form method="POST" action="/dashboard">
+<input type="hidden" name="_token" value="Jd2H3XGjHi4G7Jt2TWmQhzfqttv94E37cHaYC9HN">
+<h3 class="dark-gray-text">Username</h3>
+<h6 class="light-gray-text">How will people recognize you?</h6>
+<input id="username" type="text" name="username" value="" placeholder="Username" required autofocus>
+<h3 class="dark-gray-text">Password</h3>
+<h6 class="light-gray-text">Only you will know this!</h6>
+<input id="password" minlength="6" type="password" name="password" placeholder="Password" value="" required>
+<input id="password_confirmation" type="password" name="password_confirmation" placeholder="Confirm Password" value="" required>
+<h3 class="dark-gray-text">Date of Birth</h3>
+<h6 class="light-gray-text">We use this to apply the right account settings for your age.</h6>
+<input id="dob" type="date" name="dob" required>
+<div id="dob-notice" style="display:none;margin-bottom:5px;padding:6px 8px;border-radius:4px;border-left:3px solid #f4a244;background-color:#2a2213;font-size:12px;color:#c9922a;">
+    <strong>Parental controls will apply.</strong> Since you are 13 or under, your account will have parental controls enabled by default. A parent or guardian will need to approve certain actions. You can learn more on our <a href="/parents" style="color:#f4a244;">Parents page</a>.
+</div>
+<h3 class="dark-gray-text" style="margin-top:4px;">Important</h3>
+<h6 class="light-gray-text">Please read before continuing.</h6>
+<div style="margin-bottom:5px;padding:7px 9px;border-radius:4px;border-left:3px solid #869eff;background-color:#13193a;font-size:12px;color:#9eaacc;line-height:1.6;">
+    By providing your date of birth, you confirm it is accurate. Players aged 13 or under will have parental controls automatically enabled on their account. These controls include content filtering, algorithm restrictions, time limits, and supervision features. Players aged 14 and above are not subject to these restrictions by default. Attempting to lie about your birthday will result in a permanent ban.
+</div>
+<h3 class="dark-gray-text">Email</h3>
+<h6 class="light-gray-text">This must be valid so we can contact you!</h6>
+<input id="email" type="email" name="email" placeholder="Email (optional)" value="">
+<div class="col-1-1" style="margin-top:5px;">
+<div class="h-captcha" data-sitekey="8af8210e-53ce-46e9-971f-66ec41629448"></div>
+</div>
+<div class="col-1-1">
+<div style="padding-top:5px;"></div>
+<button type="submit" class="blue">
+Register
+</button>
+</div>
+<div class="col-1-1">
+<span class="gray-text" style="font-size:14px;">By signing up to Brick Hill Rewritten, you confirm that you have read and agree to the <a class="dark-gray-text bold" href="/terms" target="_blank">Terms of Service</a>, as well as our <a class="dark-gray-text bold" href="/privacy" target="_blank">Privacy Policy</a>.</span>
+</div>
+</form>
+</div>
+<div class="col-4-12" style="position:relative;min-height:310px;">
+<div class="col-12-12" style="position:absolute;top:5px;right:5px;">
+<div style="border-radius:5px;border:1px solid #D9D9D9;padding:5px;">
+<h3 class="dark-gray-text">Already have an account?</h3>
+<span class="light-gray-text" style="font-size:15px;">If you've forgotten your password go to <a class="dark-gray-text bold" href="/password/forgot">forgot password</a>.<br><br>To login, go to <a class="dark-gray-text bold" href="/login">login</a>.<br><br>Can't play? Go to <a class="dark-gray-text bold" href="/download">download</a> and install the client!</span>
+<hr style="border:none;border-top:1px solid #3a3a3e;margin:8px 0;">
+<h3 class="dark-gray-text">Account Considerations</h3>
+<span class="light-gray-text" style="font-size:13px;line-height:1.7;display:block;margin-top:4px;">
+    Accounts registered by players aged <strong class="dark-gray-text">13 or under</strong> will have <strong class="dark-gray-text">parental controls</strong> enabled by default. This includes:<br><br>
+    <span style="display:block;margin-bottom:3px;">&#x2022; <strong class="dark-gray-text">Content filtering</strong> — what your child can see and play</span>
+    <span style="display:block;margin-bottom:3px;">&#x2022; <strong class="dark-gray-text">Algorithm restrictions</strong> — curated, age-appropriate recommendations</span>
+    <span style="display:block;margin-bottom:3px;">&#x2022; <strong class="dark-gray-text">Supervision</strong> — activity visibility for a parent or guardian</span>
+    <span style="display:block;margin-bottom:3px;">&#x2022; <strong class="dark-gray-text">Time limits</strong> — daily playtime management</span>
+    <span style="display:block;margin-bottom:6px;">&#x2022; <strong class="dark-gray-text">Interaction limits</strong> — restricted messaging and social features</span>
+    Players aged <strong class="dark-gray-text">14 and above</strong> are not subject to these restrictions by default. Parents can learn more and manage settings on our <a class="dark-gray-text bold" href="/parents">Parents page</a>.
+</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+    var password = $('#password');
+    var passconf = $('#password_confirmation');
+    var username = $('#username');
+
+    password.on('change', confPassword);
+    passconf.on('keyup', confPassword);
+    username.on('change', trimUsername);
+
+    function confPassword() {
+        if(password.val() !== passconf.val()) {
+            passconf[0].setCustomValidity('Passwords do not match.');
+        } else {
+            passconf[0].setCustomValidity('');
+        }
+    }
+
+    function trimUsername() {
+        if(username.val() !== username.val().trim()) {
+            username[0].setCustomValidity('Username cannot have spaces at the beginning or end.');
+        } else {
+            username[0].setCustomValidity('');
+        }
+    }
+
+    // Date of birth — show parental controls notice if 13 or under
+    var dob = $('#dob');
+    var dobNotice = $('#dob-notice');
+
+    dob.on('change', function() {
+        var val = dob.val();
+        if (!val) { dobNotice.hide(); return; }
+        var birth = new Date(val);
+        var today = new Date();
+        var age = today.getFullYear() - birth.getFullYear();
+        var m = today.getMonth() - birth.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) age--;
+        if (age <= 13) {
+            dobNotice.show();
+        } else {
+            dobNotice.hide();
+        }
+    });
+</script>
+
+</div>
+
+<div class="static-footer-wrap new-theme">
+<footer>
+  <div class="footer-social very-bold flex">
+    <p class="blue-text no-mobile">FOLLOW US</p>
+
+    <a href="mailto:bhrewritten@gmail.com" target="_blank">
+      <svg class="footer-social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+      </svg>
+    </a>
+
+    <a href="https://x.com/bhrewritten" target="_blank">
+      <svg class="footer-social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622 5.91-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+      </svg>
+    </a>
+
+    <a href="https://github.com/luizcsx/bhrewritten" target="_blank">
+      <svg class="footer-social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+      </svg>
+    </a>
+
+    <a href="https://www.youtube.com/@bhrewritten" target="_blank">
+      <svg class="footer-social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+      </svg>
+    </a>
+
+    <a href="https://instagram.com/bhrewritten" target="_blank">
+      <svg class="footer-social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+      </svg>
+    </a>
+
+    <a href="https://tiktok.com/@bhrewritten" target="_blank">
+      <svg class="footer-social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/>
+      </svg>
+    </a>
+  </div>
+
+  <div class="footer-divider"></div>
+
+  <div class="footer-links flex">
+    <a href="/terms">TERMS OF SERVICE</a>
+    <a href="/rules">RULES OF CONDUCT</a>
+    <a href="/privacy">PRIVACY POLICY</a>
+    <a href="/team">TEAM</a>
+    <a href="https://github.com/luizcsx/bhrewritten">REPOSITORY</a>
+  </div>
+
+  <div class="footer-divider"></div>
+
+  <p class="footer-copyright">
+    &copy; <script>document.write(new Date().getFullYear())</script> Brick Hill Rewritten Team. Brick Hill™ is a registered trademark of Mooshimity, Ltd. We are not partners, sponsors, or affiliates of Mooshimity, Ltd. BHRewritten.pages.dev is a non-profit and completely free project with no attempt to generate any revenue.
+  </p>
+</footer>
+</div>
+
+</body>
+</html>
