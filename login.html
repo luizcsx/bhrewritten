@@ -15,7 +15,7 @@
 <link href="cdn/favicon.ico" rel="icon">
 <link href="cdn/css/c9a0705161b97f89816f.css" rel="stylesheet" type="text/css">
 <link href="cdn/css/0ae4afbd7666558dc6c6.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" crossorigin="anonymous">
 <script src="cdn/js/a7ee297bf1549559dc3f.js"></script>
 <script src="cdn/js/2be524371fb890d9a658.js"></script>
 <script src="cdn/js/d5fc6b02ce16b82664fd.js"></script>
@@ -23,18 +23,19 @@
 <script src="cdn/js/57af023c87e71bf36f5a.js"></script>
 <script src="https://hcaptcha.com/1/api.js" async defer></script>
 <meta name="author" content="Brick Hill Rewritten">
+
 <style>
-.footer-social-icon {
-    display: inline-block;
-    width: 48px;
-    height: 48px;
-    fill: #64646a;
-    vertical-align: middle;
+body {
+    background-color: #222226;
 }
+
+.static-footer-wrap { position: relative; }
+.static-footer-wrap footer { position: relative !important; bottom: auto !important; }
+.footer-social-icon { display: inline-block; width: 48px; height: 48px; fill: #64646a; vertical-align: middle; }
 </style>
 </head>
 <body>
- 
+
 <nav>
 <div class="primary">
 <div class="grid">
@@ -81,21 +82,24 @@ Parents
 </div>
 </div>
 </nav>
+
 <div class="main-holder grid">
 <notification id="notification-v" class="notification"></notification>
+
 <div class="col-1-3 push-1-3">
 <div class="card">
 <div class="top green">
 Login
 </div>
 <div class="content">
-<form method="POST" action="/login">
-<input type="hidden" name="_token" value="5UqISpPGb3LpnXwZO0cQAII7roHVlqnC5YnhKSKp"> <input id="username" type="username" name="username" value="" placeholder="Username" required autofocus>
-<div style="height: 5px;"></div>
-<input style="display:block;" id="password" type="password" name="password" autocomplete="password" placeholder="Password" required>
+<form method="POST" action="/auth/login">
+<input type="hidden" name="_token" value="5UqISpPGb3LpnXwZO0cQAII7roHVlqnC5YnhKSKp">
+<input id="username" type="text" name="username" value="" placeholder="Username" required autofocus style="display:block;">
+<div style="height:5px;"></div>
+<input id="password" type="password" name="password" autocomplete="current-password" placeholder="Password" required style="display:block;">
 <a href="/password/forgot" style="font-size:15px;">Forgot password?</a>
 <div style="padding-top:5px;"></div>
-<div class="h-captcha" data-sitekey="b4846124-8224-428e-8a08-a60877c66bcc"></div>
+<div class="h-captcha" data-sitekey="8af8210e-53ce-46e9-971f-66ec41629448"></div>
 <div style="padding-top:5px;"></div>
 <button type="submit" class="green">
 Login
@@ -104,7 +108,9 @@ Login
 </div>
 </div>
 </div>
+
 </div>
+
 <div class="static-footer-wrap new-theme">
 <footer>
   <div class="footer-social very-bold flex">
@@ -112,8 +118,8 @@ Login
 
     <a href="mailto:bhrewritten@gmail.com" target="_blank">
       <svg class="footer-social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-     </svg>
+        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+      </svg>
     </a>
 
     <a href="https://x.com/bhrewritten" target="_blank">
@@ -154,15 +160,16 @@ Login
     <a href="/rules">RULES OF CONDUCT</a>
     <a href="/privacy">PRIVACY POLICY</a>
     <a href="/team">TEAM</a>
-    <a href="https://github.com/luizcsx/bh-rewritten">REPOSITORY</a>
+    <a href="https://github.com/luizcsx/bhrewritten">REPOSITORY</a>
   </div>
 
   <div class="footer-divider"></div>
 
   <p class="footer-copyright">
-    &copy; <script>document.write(new Date().getFullYear())</script> Brick Hill Rewritten Team. Brick Hill™ is a registered trademark of Mooshimity, Ltd. We are not partners, sponsors, or affiliates of Mooshimity, Ltd. BHRewritten.pages.dev is a non-profit and completely free project with no attempt to generate any revenue.
+    &copy; <script>document.write(new Date().getFullYear())</script> Brick Hill Rewritten Team. Brick Hill&trade; is a registered trademark of Mooshimity, Ltd. We are not partners, sponsors, or affiliates of Mooshimity, Ltd. BHRewritten.pages.dev is a non-profit and completely free project with no attempt to generate any revenue.
   </p>
 </footer>
 </div>
+
 </body>
 </html>
