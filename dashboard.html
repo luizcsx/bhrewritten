@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-dark">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#00A9FE">
+    <meta name="og:image" content="cdn/favicon.ico">
+    <meta name="og:site_name" content="Brick Hill Rewritten">
+    <meta name="og:description" content="A platform built on its community where you can customise your avatar, create and play games, or just socialise with others!">
+    <meta name="user-data" data-authenticated="false">
+    <title>Dashboard - Brick Hill Rewritten</title>
+    <meta name="og:title" content="Dashboard - Brick Hill Rewritten">
+    <link href="cdn/favicon.ico" rel="icon">
+    <link href="cdn/archives/lava-hill/css/d198aab6d774e1ed928d.css" rel="stylesheet" type="text/css">
+    <link href="cdn/archives/lava-hill/css/06cb60d96ba45a44e7d7.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <script src="cdn/archives/lava-hill/2ca5b4a35594e0007390.js"></script>
+    <script src="cdn/archives/lava-hill/445090e18f053836c4aa.js"></script>
+    <script src="cdn/archives/lava-hill/9f61c3848dfaa89d246a.js"></script>
+    <script src="cdn/archives/lava-hill/3df0d4412f58b667b5b1.js"></script>
+    <script src="cdn/archives/lava-hill/ea122f7ca6afcb6f9cd5.js"></script>
+    <meta name="author" content="Brick Hill Rewritten">
+
+    <style>
+        body { background-color: #222226; }
+
+        /* ── Guard overlay — exibido enquanto verifica sessão ── */
+        #auth-guard {
+            position: fixed; inset: 0;
+            background: #222226;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64646a;
+            font-size: .9em;
+        }
+
+        /* ── Parental controls banner (req. 3) ── */
+        #parental-banner {
+            display: none;
+            background-color: #2a2213;
+            border-left: 4px solid #f4a244;
+            padding: 10px 16px;
+            font-size: 13px;
+            color: #c9922a;
+        }
+        #parental-banner strong { color: #f4a244; }
+        #parental-banner a      { color: #f4a244; text-decoration: underline; }
+
+        /* ── Feed ── */
+        .feed-empty     { color: #64646a; font-size: .88em; padding: 12px 0; text-align: center; }
+        .feed-timestamp { color: #64646a; font-size: .8em; }
+
+        /* ── Footer ── */
+        .static-footer-wrap { position: relative; }
+        .static-footer-wrap footer { position: relative !important; bottom: auto !important; }
+        .footer-social-icon { display: inline-block; width: 48px; height: 48px; fill: #64646a; vertical-align: middle; }
+    </style>
+</head>
+<body>
+
+<!--
+    ═══════════════════════════════════════════════════════
+    REQ. 8 — Guard de autenticação
+    Exibe overlay enquanto verifica sessão via /auth/session.
+    Se 401 → redireciona para / imediatamente.
+    Cookie HttpOnly (server-side) — nenhum token sensível
+    fica exposto no JS do cliente.
+    ═══════════════════════════════════════════════════════
+-->
+<div id="auth-guard">Verifying session…</div>
+
+<nav>
+    <div class="primary">
+        <div class="grid">
+            <div class="push-left">
+                <ul>
+                    <li><a href="/play">Play</a></li>
+                    <li><a href="/shop">Shop</a></li>
+                    <li><a href="/clans">Clans</a></li>
+                    <li><a href="/users">Users</a></li>
+                    <li><a href="/forum">Forum</a></li>
+                    <li><a href="/parents">Parents</a></li>
+                </ul>
+            </div>
+            <div class="nav-user push-right" id="info">
+                <div class="info">
+                    <!-- Req. 1 — valores reais vindos de /user/me -->
+                    <a href="/currency" class="header-data" id="nav-bucks" title="Bucks">
+                        <span class="bucks-icon img-white"></span>
+                        <span id="nav-bucks-val">—</span>
+                    </a>
+                    <a href="/currency" class="header-data" id="nav-bits" title="Bits">
+                        <span class="bits-icon img-white"></span>
+                        <span id="nav-bits-val">—</span>
+                    </a>
+                    <a href="/messages" class="header-data">
+                        <span class="messages-icon img-white"></span>
+                        <span id="nav-messages-val"></span>
+                    </a>
+                    <a href="/friends" class="header-data">
+                        <span class="friends-icon img-white"></span>
+                        <span id="nav-friends-val">—</span>
+                    </a>
+                </div>
+                <div class="username ellipsis">
+                    <div id="username-bar">
+                        <div class="username-holder ellipsis inline unselectable" id="nav-username">…</div>
+                        <i class="arrow-down img-white"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="secondary">
+        <div class="grid">
+            <div class="bottom-bar">
+                <ul>
+                    <li><a href="/dashboard"  id="pHome">Home</a></li>
+                    <li><a href="/settings"   id="pSettings">Settings</a></li>
+                    <li><a href="/customize"  id="pAvatar">Avatar</a></li>
+                    <li><a href="#"           id="pProfile">Profile</a></li><!-- preenchido por JS -->
+                    <li><a href="/client"     id="pDownload">Download</a></li>
+                    <li><a href="/trades"     id="pTrades">Trades</a></li>
+                    <li><a href="/sets"       id="pSets">Sets</a></li>
+                    <li><a href="/currency"   id="pCurrency">Currency</a></li>
+                    <li><a href="https://bhrewritten.pages.dev" id="pRepo">Repository</a></li>
+                    <li><a href="/promocodes" id="pPromocodes">Promocodes</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Dropdown de logout (req. 7) -->
+<dropdown id="dropdown-v" class="dropdown" activator="username-bar" contentclass="logout-dropdown">
+    <ul>
+        <li><a id="logout-btn" style="cursor:pointer;">Logout</a></li>
+    </ul>
+</dropdown>
+
+<!-- Req. 3 — banner parental -->
+<div id="parental-banner">
+    <strong><i class="fas fa-shield-alt" style="margin-right:6px;"></i>Parental Controls Active</strong> —
+    This account has parental controls enabled because it is registered to a user aged 13 or under.
+    Content filtering, algorithm restrictions, time limits, interaction limits, and supervision features are active.
+    <a href="/parents">Learn more</a>.
+</div>
+
+<div class="col-10-12 push-1-12">
+    <div class="alert warning">A notification test. We will use this for alerts, events, messages, maintenance, etc.</div>
+</div>
+
+<div class="main-holder grid">
+    <notification id="notification-v" class="notification"></notification>
+
+    <div class="col-10-12 push-1-12">
+        <div class="alert error" id="no-email-banner" style="display:none;">
+            You don't have an email attached to your account!
+            <a href="/settings" class="button small green" style="margin-left:10px;margin-right:15px;">Add One</a>
+            <a href="#" id="dismiss-email-banner" class="button small red">No thanks</a>
+        </div>
+    </div>
+
+    <div class="new-theme dashboard">
+
+        <!-- ── Coluna esquerda ── -->
+        <div class="col-3-10">
+            <div class="card border-bottom no-rounded no-shadow">
+                <div class="rounded center-text">
+                    <!-- Req. 4 — avatar com ID real -->
+                    <img class="avatar-thumbnail" id="dash-avatar" src="cdn/img/avatar-placeholder.png" style="width:100%;">
+
+                    <!-- Req. 2 — clan primário real -->
+                    <div id="dash-clan-wrap" style="display:none;">
+                        <a id="dash-clan-link" href="#">
+                            <span class="bold medium-text light-text" id="dash-clan-name"></span>
+                        </a>
+                    </div>
+
+                    <!-- Req. 4 — username real -->
+                    <span style="margin:5px;" class="bold medium-text" id="dash-username">…</span>
+
+                    <div class="dashboard-info flex flex-column flex-items-center">
+                        <div class="flex dash-info vmargin-6">
+                            <div class="flex streak-info dash-info ml-20 mr-10 flex-items-center">
+                                <!-- Req. 1 — trade count real -->
+                                <i class="fas fa-exchange-alt mr-10" style="color:#64646a;" title="Trades"></i>
+                                <p class="smedium-text mr-20" id="dash-trades">—</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Req. 1 — friend count real -->
+            <div>
+                <div class="flex flex-items-center flex-horiz-center">
+                    <p class="very-bold smedium-text mr-10" id="dash-friends-count">—</p>
+                    <p class="bold small-text gray-text">FRIENDS</p>
+                </div>
+            </div>
+
+            <!-- Lista de amigos -->
+            <div class="card no-rounded no-shadow" id="friends-list">
+                <p class="feed-empty">Loading friends…</p>
+            </div>
+        </div>
+
+        <!-- ── Coluna direita ── -->
+        <div class="col-8-12">
+            <blog-card id="blogcard-v" class="blogcard"></blog-card>
+
+            <!-- Req. 6 — form de post -->
+            <div class="card border-bottom no-shadow no-rounded">
+                <div class="smedium-text mb-16 bold">What's New?</div>
+                <div style="width:100%;" class="pb3">
+                    <div class="flex flex-column">
+                        <textarea id="feed-input" class="post-input border mb-16" placeholder="Right now I'm…" maxlength="300"></textarea>
+                        <div style="display:flex;align-items:center;gap:10px;">
+                            <button id="feed-submit" class="post-button button small smaller-text blue">Submit</button>
+                            <span id="feed-char-count" style="font-size:.8em;color:#64646a;">300</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Req. 5 — feed real dos amigos -->
+            <div class="card no-shadow">
+                <div class="smedium-text mb-16 bold">Your Feed</div>
+                <div id="feed-container">
+                    <p class="feed-empty">Loading feed…</p>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /dashboard -->
+</div><!-- /main-holder -->
+
+<!-- ── Footer (req. 9) ── -->
+<div class="static-footer-wrap new-theme">
+<footer>
+  <div class="footer-social very-bold flex">
+    <p class="blue-text no-mobile">FOLLOW US</p>
+    <a href="mailto:bhrewritten@gmail.com" target="_blank">
+      <svg class="footer-social-icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+    </a>
+    <a href="https://x.com/bhrewritten" target="_blank">
+      <svg class="footer-social-icon" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622 5.91-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    </a>
+    <a href="https://github.com/luizcsx/bhrewritten" target="_blank">
+      <svg class="footer-social-icon" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+    </a>
+    <a href="https://www.youtube.com/@bhrewritten" target="_blank">
+      <svg class="footer-social-icon" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+    </a>
+    <a href="https://instagram.com/bhrewritten" target="_blank">
+      <svg class="footer-social-icon" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+    </a>
+    <a href="https://tiktok.com/@bhrewritten" target="_blank">
+      <svg class="footer-social-icon" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg>
+    </a>
+  </div>
+  <div class="footer-divider"></div>
+  <div class="footer-links flex">
+    <a href="/terms">TERMS OF SERVICE</a>
+    <a href="/rules">RULES OF CONDUCT</a>
+    <a href="/privacy">PRIVACY POLICY</a>
+    <a href="/team">TEAM</a>
+    <a href="https://bhrewritten.pages.dev">REPOSITORY</a>
+  </div>
+  <div class="footer-divider"></div>
+  <p class="footer-copyright">
+    &copy; <script>document.write(new Date().getFullYear())</script> Brick Hill Rewritten Team.
+    Brick Hill&trade; is a registered trademark of Mooshimity, Ltd.
+    We are not partners, sponsors, or affiliates of Mooshimity, Ltd.
+    BHRewritten.pages.dev is a non-profit and completely free project with no attempt to generate any revenue.
+  </p>
+</footer>
+</div>
+
+<script>
+function avatarUrl(userId) {
+    return '/api/avatar/' + userId;
+}
+
+function esc(str) {
+    return String(str)
+        .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+        .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function timeAgo(isoDate) {
+    var diff = Math.floor((Date.now() - new Date(isoDate)) / 1000);
+    if (diff < 60)      return diff + 's ago';
+    if (diff < 3600)    return Math.floor(diff/60)   + 'm ago';
+    if (diff < 86400)   return Math.floor(diff/3600) + 'h ago';
+    if (diff < 2592000) return Math.floor(diff/86400)+ 'd ago';
+    return Math.floor(diff/2592000) + 'mo ago';
+}
+
+(async function authGuard() {
+    try {
+        var r = await fetch('/auth/session', { credentials: 'same-origin' });
+        if (!r.ok) { location.replace('/'); return; }
+        document.getElementById('auth-guard').style.display = 'none';
+        init();
+    } catch(e) {
+        location.replace('/');
+    }
+})();
+
+document.getElementById('logout-btn').addEventListener('click', async function() {
+    await fetch('/auth/logout', { method: 'POST', credentials: 'same-origin' });
+    location.replace('/');
+});
+
+async function loadUserData() {
+    var r = await fetch('/user/me', { credentials: 'same-origin' });
+    if (!r.ok) return;
+    var json = await r.json();
+    var u    = json.user;
+    var clan = json.clan;
+
+    document.getElementById('nav-username').textContent  = u.username;
+    document.getElementById('dash-username').textContent = u.username;
+    document.getElementById('pProfile').href = '/user/' + u.id;
+
+    document.getElementById('dash-avatar').src = avatarUrl(u.id);
+
+    document.getElementById('nav-bucks-val').textContent    = (u.bucks         ?? 0).toLocaleString();
+    document.getElementById('nav-bits-val').textContent     = (u.bits          ?? 0).toLocaleString();
+    document.getElementById('nav-friends-val').textContent  = (u.friend_count  ?? 0).toLocaleString();
+    document.getElementById('nav-messages-val').textContent = u.message_count > 0 ? u.message_count : '';
+    document.getElementById('dash-trades').textContent      = (u.trade_count   ?? 0).toLocaleString();
+    document.getElementById('dash-friends-count').textContent = (u.friend_count ?? 0).toLocaleString();
+
+    if (u.is_13) {
+        document.getElementById('parental-banner').style.display = 'block';
+    }
+
+    if (!u.has_email) {
+        document.getElementById('no-email-banner').style.display = 'block';
+    }
+
+    if (clan) {
+        document.getElementById('dash-clan-name').textContent = clan.title;
+        document.getElementById('dash-clan-link').href        = '/clan/' + clan.id;
+        document.getElementById('dash-clan-wrap').style.display = 'block';
+    }
+}
+
+async function loadFeed() {
+    var container = document.getElementById('feed-container');
+    try {
+        var r    = await fetch('/feed', { credentials: 'same-origin' });
+        var json = await r.json();
+        var posts = json.posts || [];
+
+        if (posts.length === 0) {
+            container.innerHTML = '<p class="feed-empty">Nothing here yet. Post something or add friends!</p>';
+            return;
+        }
+
+        container.innerHTML = posts.map(function(p) {
+            var author = p.users || {};
+            var ago    = timeAgo(p.created_at);
+            var title  = new Date(p.created_at).toLocaleString();
+            return '<div class="status border-bottom mb-12 flex">' +
+                '<a href="/user/' + esc(author.id) + '">' +
+                    '<img src="' + avatarUrl(author.id) + '" style="width:40px;height:40px;">' +
+                '</a>' +
+                '<div class="ml-5 mb-10">' +
+                    '<div class="flex">' +
+                        '<a href="/user/' + esc(author.id) + '" class="very-bold mr-5">' + esc(author.username) + '</a>' +
+                        '<span class="mr-5">&#183;</span>' +
+                        '<span class="feed-timestamp small-text" title="' + title + '">' + ago + '</span>' +
+                    '</div>' +
+                    '<div>' + esc(p.content) + '</div>' +
+                '</div>' +
+            '</div>';
+        }).join('');
+    } catch(e) {
+        container.innerHTML = '<p class="feed-empty">Could not load feed.</p>';
+    }
+}
+
+async function loadFriends() {
+    var container = document.getElementById('friends-list');
+    try {
+        var r     = await fetch('/user/friends', { credentials: 'same-origin' });
+        var json  = await r.json();
+        var friends = json.friends || [];
+
+        if (friends.length === 0) {
+            container.innerHTML = '<p class="feed-empty">No friends yet. <a href="/users">Find some!</a></p>';
+            return;
+        }
+
+        container.innerHTML = friends.map(function(f) {
+            return '<div class="status">' +
+                '<a href="/user/' + esc(f.id) + '">' +
+                    '<img src="' + avatarUrl(f.id) + '">' +
+                '</a>' +
+                '<div class="ellipsis ml-5">' +
+                    '<div class="mb-12 smedium-text relative ellipsis flex">' +
+                        '<span class="ellipsis">' + esc(f.username) + '</span>' +
+                        '<span class="status-dot status-dashboard ' + (f.is_online ? 'online' : '') + '"></span>' +
+                    '</div>' +
+                    '<a class="mb-12 bold small-text very-bold" href="/message/' + esc(f.id) + '/send">MESSAGE</a>' +
+                '</div>' +
+            '</div>';
+        }).join('') +
+        '<a class="small-text bold" href="/friends">VIEW ALL</a>';
+    } catch(e) {
+        container.innerHTML = '<p class="feed-empty">Could not load friends.</p>';
+    }
+}
+
+document.getElementById('feed-input').addEventListener('input', function() {
+    var remaining = 300 - this.value.length;
+    document.getElementById('feed-char-count').textContent = remaining;
+    document.getElementById('feed-char-count').style.color = remaining < 30 ? '#de000d' : '#64646a';
+});
+
+document.getElementById('feed-submit').addEventListener('click', async function() {
+    var input   = document.getElementById('feed-input');
+    var content = input.value.trim();
+    if (!content) return;
+
+    this.disabled    = true;
+    this.textContent = 'Posting…';
+
+    try {
+        var r = await fetch('/feed', {
+            method:      'POST',
+            credentials: 'same-origin',
+            headers:     { 'Content-Type': 'application/json' },
+            body:        JSON.stringify({ content })
+        });
+        if (!r.ok) {
+            var err = await r.json().catch(() => ({}));
+            alert(err.error || 'Could not post. Please try again.');
+            return;
+        }
+        input.value = '';
+        document.getElementById('feed-char-count').textContent = '300';
+        await loadFeed();
+    } catch(e) {
+        alert('Could not post. Please try again.');
+    } finally {
+        this.disabled    = false;
+        this.textContent = 'Submit';
+    }
+});
+
+window.addEventListener('popstate', async function() {
+    var r = await fetch('/auth/session', { credentials: 'same-origin' }).catch(() => ({ ok: false }));
+    if (!r.ok) location.replace('/');
+});
+
+document.getElementById('dismiss-email-banner').addEventListener('click', function(e) {
+    e.preventDefault();
+    document.getElementById('no-email-banner').style.display = 'none';
+});
+
+async function init() {
+    await loadUserData();
+    await Promise.all([ loadFriends(), loadFeed() ]);
+}
+</script>
+
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"af31f6d35bb5478b96f13add5a8712d4","r":1}' crossorigin="anonymous"></script>
+
+</body>
+</html>
