@@ -1,5 +1,0 @@
-name       = "bhrewritten"
-pages_build_output_dir = "."
-
-[vars]
-SUPABASE_URL = "https://yvskhacvyvuarkoubsjs.supabase.co"
