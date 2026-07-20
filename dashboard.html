@@ -9,7 +9,7 @@
 <meta name="og:site_name" content="Brick Hill Rewritten">
 <meta name="og:description" content="A platform built on its community where you can customise your avatar, create and play games, or just socialise with others!">
 <meta name="csrf-token" content="A2PENEVIBz4i1ykmgfzzPBKnnveOtSTsAEjnSkka">
-<meta name="user-data" data-authenticated="true">
+<meta name="user-data" data-authenticated="false">
 <title>Dashboard - Brick Hill Rewritten</title>
 <meta name="og:title" content="Dashboard - Brick Hill Rewritten">
 <link href="cdn/favicon.ico" rel="icon">
@@ -58,7 +58,7 @@
 </head>
 <body>
 
-<div id="auth-guard">Verifying session…</div>
+<div id="auth-guard">Verifying session...</div>
 
 <nav>
     <div class="primary">
@@ -405,7 +405,7 @@ document.getElementById('feed-submit').addEventListener('click', async function(
     if (!content) return;
 
     this.disabled    = true;
-    this.textContent = 'Posting…';
+    this.textContent = 'Posting...';
 
     try {
         var r = await fetch('/feed', {
