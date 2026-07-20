@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#00A9FE">
 <meta name="og:image" content="cdn/favicon.ico">
-<meta name="og:site_name" content="Dashboard - Brick Hill Rewritten">
+<meta name="og:site_name" content="Brick Hill Rewritten">
 <meta name="og:description" content="A platform built on its community where you can customise your avatar, create and play games, or just socialise with others!">
 <meta name="csrf-token" content="A2PENEVIBz4i1ykmgfzzPBKnnveOtSTsAEjnSkka">
 <meta name="user-data" data-authenticated="false">
-<title>Dashboard - Brick Hill Rewritten</title>
-<meta name="og:title" content="Dashboard - Brick Hill Rewritten">
+<title>Brick Hill Rewritten</title>
+<meta name="og:title" content="Brick Hill Rewritten">
 <link href="cdn/favicon.ico" rel="icon">
 <link href="cdn/css/c9a0705161b97f89816f.css" rel="stylesheet" type="text/css">
 <link href="cdn/css/0ae4afbd7666558dc6c6.css" rel="stylesheet" type="text/css">
@@ -25,7 +25,6 @@
     <style>
         body { background-color: #222226; }
 
-        /* ── Guard overlay — exibido enquanto verifica sessão ── */
         #auth-guard {
             position: fixed; inset: 0;
             background: #222226;
@@ -37,7 +36,6 @@
             font-size: .9em;
         }
 
-        /* ── Parental controls banner (req. 3) ── */
         #parental-banner {
             display: none;
             background-color: #2a2213;
@@ -49,11 +47,9 @@
         #parental-banner strong { color: #f4a244; }
         #parental-banner a      { color: #f4a244; text-decoration: underline; }
 
-        /* ── Feed ── */
         .feed-empty     { color: #64646a; font-size: .88em; padding: 12px 0; text-align: center; }
         .feed-timestamp { color: #64646a; font-size: .8em; }
 
-        /* ── Footer ── */
         .static-footer-wrap { position: relative; }
         .static-footer-wrap footer { position: relative !important; bottom: auto !important; }
         .footer-social-icon { display: inline-block; width: 48px; height: 48px; fill: #64646a; vertical-align: middle; }
@@ -61,15 +57,6 @@
 </head>
 <body>
 
-<!--
-    ═══════════════════════════════════════════════════════
-    REQ. 8 — Guard de autenticação
-    Exibe overlay enquanto verifica sessão via /auth/session.
-    Se 401 → redireciona para / imediatamente.
-    Cookie HttpOnly (server-side) — nenhum token sensível
-    fica exposto no JS do cliente.
-    ═══════════════════════════════════════════════════════
--->
 <div id="auth-guard">Verifying session…</div>
 
 <nav>
@@ -87,7 +74,6 @@
             </div>
             <div class="nav-user push-right" id="info">
                 <div class="info">
-                    <!-- Req. 1 — valores reais vindos de /user/me -->
                     <a href="/currency" class="header-data" id="nav-bucks" title="Bucks">
                         <span class="bucks-icon img-white"></span>
                         <span id="nav-bucks-val">—</span>
@@ -121,7 +107,7 @@
                     <li><a href="/dashboard"  id="pHome">Home</a></li>
                     <li><a href="/settings"   id="pSettings">Settings</a></li>
                     <li><a href="/customize"  id="pAvatar">Avatar</a></li>
-                    <li><a href="#"           id="pProfile">Profile</a></li><!-- preenchido por JS -->
+                    <li><a href="#"           id="pProfile">Profile</a></li>
                     <li><a href="/client"     id="pDownload">Download</a></li>
                     <li><a href="/trades"     id="pTrades">Trades</a></li>
                     <li><a href="/sets"       id="pSets">Sets</a></li>
@@ -134,14 +120,12 @@
     </div>
 </nav>
 
-<!-- Dropdown de logout (req. 7) -->
 <dropdown id="dropdown-v" class="dropdown" activator="username-bar" contentclass="logout-dropdown">
     <ul>
         <li><a id="logout-btn" style="cursor:pointer;">Logout</a></li>
     </ul>
 </dropdown>
 
-<!-- Req. 3 — banner parental -->
 <div id="parental-banner">
     <strong><i class="fas fa-shield-alt" style="margin-right:6px;"></i>Parental Controls Active</strong> —
     This account has parental controls enabled because it is registered to a user aged 13 or under.
@@ -166,27 +150,22 @@
 
     <div class="new-theme dashboard">
 
-        <!-- ── Coluna esquerda ── -->
         <div class="col-3-10">
             <div class="card border-bottom no-rounded no-shadow">
                 <div class="rounded center-text">
-                    <!-- Req. 4 — avatar com ID real -->
                     <img class="avatar-thumbnail" id="dash-avatar" src="cdn/img/avatar-placeholder.png" style="width:100%;">
 
-                    <!-- Req. 2 — clan primário real -->
                     <div id="dash-clan-wrap" style="display:none;">
                         <a id="dash-clan-link" href="#">
                             <span class="bold medium-text light-text" id="dash-clan-name"></span>
                         </a>
                     </div>
 
-                    <!-- Req. 4 — username real -->
                     <span style="margin:5px;" class="bold medium-text" id="dash-username">…</span>
 
                     <div class="dashboard-info flex flex-column flex-items-center">
                         <div class="flex dash-info vmargin-6">
                             <div class="flex streak-info dash-info ml-20 mr-10 flex-items-center">
-                                <!-- Req. 1 — trade count real -->
                                 <i class="fas fa-exchange-alt mr-10" style="color:#64646a;" title="Trades"></i>
                                 <p class="smedium-text mr-20" id="dash-trades">—</p>
                             </div>
@@ -195,7 +174,6 @@
                 </div>
             </div>
 
-            <!-- Req. 1 — friend count real -->
             <div>
                 <div class="flex flex-items-center flex-horiz-center">
                     <p class="very-bold smedium-text mr-10" id="dash-friends-count">—</p>
@@ -203,17 +181,14 @@
                 </div>
             </div>
 
-            <!-- Lista de amigos -->
             <div class="card no-rounded no-shadow" id="friends-list">
-                <p class="feed-empty">Loading friends…</p>
+                <p class="feed-empty">Loading friends...</p>
             </div>
         </div>
 
-        <!-- ── Coluna direita ── -->
         <div class="col-8-12">
             <blog-card id="blogcard-v" class="blogcard"></blog-card>
 
-            <!-- Req. 6 — form de post -->
             <div class="card border-bottom no-shadow no-rounded">
                 <div class="smedium-text mb-16 bold">What's New?</div>
                 <div style="width:100%;" class="pb3">
@@ -227,19 +202,17 @@
                 </div>
             </div>
 
-            <!-- Req. 5 — feed real dos amigos -->
             <div class="card no-shadow">
                 <div class="smedium-text mb-16 bold">Your Feed</div>
                 <div id="feed-container">
-                    <p class="feed-empty">Loading feed…</p>
+                    <p class="feed-empty">Loading feed...</p>
                 </div>
             </div>
         </div>
 
-    </div><!-- /dashboard -->
-</div><!-- /main-holder -->
+    </div>
+</div>
 
-<!-- ── Footer (req. 9) ── -->
 <div class="static-footer-wrap new-theme">
 <footer>
   <div class="footer-social very-bold flex">
